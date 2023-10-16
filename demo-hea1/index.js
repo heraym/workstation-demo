@@ -3,7 +3,10 @@
 const express = require('express');
 const app = express();
 
+var variable1 = 1;
+
 app.get('/', (req, res) => {
+  variable1 = variable1 + 1;
   res.send('Hola Mundo!');
 });
 
