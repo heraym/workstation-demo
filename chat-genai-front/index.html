@@ -1,0 +1,27 @@
+<html><body><h1>Demo Chat Backend</h1>
+  <script>
+    function chatear() {
+     
+      pregunta = document.getElementById("pregunta").value;
+      var apiUrl = 'https://chat-genai-demo-xcowfeupla-uc.a.run.app';
+      var parametro = encodeURI(pregunta);
+      var destino = apiUrl + '?pregunta=' + parametro;
+         
+          fetch(destino).then(response => {
+            return response.text();
+          }).then(data => {
+            // Work with JSON data here
+            document.getElementById("historia").value = document.getElementById("historia").value + "\r\nusuario: " + pregunta + "\r\nbot: " + data;
+          }).catch(err => {
+            alert("error" + err);
+            // Do something for an error here
+          });
+    }
+  </script>
+  <form>
+      <label for="fname">Pregunta:</label><br>
+      <input type="text" id="pregunta" size="50"/><br>
+      <button type="button" onclick="chatear()">Chatear </button><br>
+      <textarea id="historia" rows="10" cols="50"></textarea>
+  </form>
+  </body></html>
