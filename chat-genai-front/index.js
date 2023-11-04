@@ -2,10 +2,11 @@ var express = require('express');
 const hostname = '0.0.0.0';
 const port = 8080
 const app = express();
+const cors = require('cors');
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 const path = require('path');
-
 
 app.use(express.static('public'));
 

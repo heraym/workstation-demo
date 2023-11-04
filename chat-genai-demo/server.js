@@ -6,11 +6,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 const chat = require('./chat');
 
+var corsOptions = {
+  origin: 'chat-genai-front-xcowfeupla-uc.a.run.app',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 app.get('/', async function(req,res,next) {
   var pregunta = req.query.pregunta;
+  var sesion = req.query.sesion;
   console.log("La pregunta es: " + pregunta);
-  var respuesta = await chat.callPredict(pregunta);
-  res.send(respuesta);
+  chat.chatear(pregunta, sesion, function (err, respuesta) { 
+    res.send(respuesta);
+  });
 });
 
    

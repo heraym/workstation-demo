@@ -3,9 +3,10 @@
     function chatear() {
      
       pregunta = document.getElementById("pregunta").value;
+      sesion = document.getElementById("sesion").value;
       var apiUrl = 'https://chat-genai-demo-xcowfeupla-uc.a.run.app';
       var parametro = encodeURI(pregunta);
-      var destino = apiUrl + '?pregunta=' + parametro;
+      var destino = apiUrl + '?sesion=' + sesion + '&pregunta=' + parametro;
          
           fetch(destino).then(response => {
             return response.text();
@@ -19,6 +20,8 @@
     }
   </script>
   <form>
+    <label for="fname">Sesion:</label><br>
+      <input type="text" id="sesion" size="50" value="1"></input><br>
       <label for="fname">Pregunta:</label><br>
       <input type="text" id="pregunta" size="50"/><br>
       <button type="button" onclick="chatear()">Chatear </button><br>
