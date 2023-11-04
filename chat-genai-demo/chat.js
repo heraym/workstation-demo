@@ -18,21 +18,13 @@ const clientOptions = {
 };
 const publisher = 'google';
 const model = 'chat-bison@001';
-
-
-const redis = require('redis');
-
-const REDISHOST = '10.3.1.3';
-const REDISPORT = process.env.REDISPORT || 6379;
  
 // Historia
 var historia = [];
  
 // Instantiates a client
 const predictionServiceClient = new PredictionServiceClient(clientOptions);
-const clientRedis = redis.createClient(REDISPORT, REDISHOST);
-  clientRedis.on('error', err => console.error('ERR:REDIS:', err));
-  clientRedis.on('connect', () => console.log('Connected to Redis'));
+
   
 async function chatear(pregunta, sesion, historia) {
  

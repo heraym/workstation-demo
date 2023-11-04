@@ -36,6 +36,6 @@ async function test() {
        });
      var t = await clientRedis.set(sesion,JSON.stringify(historia));
  };
-  
+// Ejemplo que funciona
  
  
